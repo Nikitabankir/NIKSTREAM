@@ -4,16 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NIKSTREAM — Бесплатное кино</title>
+<title>NIKSTREAM — Кинотеатр</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
 :root {
     --bg: #090a10;
     --panel: #151722;
     --accent: #a855f7;
-    --text: #ffffff;
+    --text: #fff;
     --muted: #a3a5b5;
 }
 
@@ -30,11 +31,11 @@ html {
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
 }
 
 header {
-    height: 76px;
+    height: 75px;
     padding: 0 7%;
     display: flex;
     align-items: center;
@@ -47,7 +48,7 @@ header {
 }
 
 .logo {
-    font-size: 26px;
+    font-size: 25px;
     font-weight: 900;
     letter-spacing: 2px;
 }
@@ -56,50 +57,22 @@ header {
     color: #bb75ff;
 }
 
-nav {
-    display: flex;
-    gap: 28px;
-}
-
-nav a {
-    color: #c7c8d3;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    transition: .2s;
-}
-
-nav a:hover {
-    color: white;
+.header-label {
+    color: #b98aff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
 }
 
 .hero {
-    min-height: 440px;
-    padding: 90px 9%;
+    min-height: 390px;
+    padding: 80px 9%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background:
-        radial-gradient(ellipse at 80% 35%, #8129ca66, transparent 45%),
+        radial-gradient(ellipse at 80% 30%, #8129ca66, transparent 45%),
         linear-gradient(110deg, #171027, #10111b 65%, #25123a);
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::after {
-    content: "N";
-    position: absolute;
-    right: 10%;
-    top: -100px;
-    font-size: 520px;
-    font-weight: 900;
-    color: #ffffff08;
-    pointer-events: none;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
 }
 
 .eyebrow {
@@ -111,10 +84,10 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: clamp(45px, 8vw, 85px);
+    font-size: clamp(48px, 8vw, 85px);
     line-height: 1;
-    font-weight: 900;
     letter-spacing: -4px;
+    font-weight: 900;
 }
 
 .hero h1 span {
@@ -122,29 +95,11 @@ nav a:hover {
 }
 
 .hero p {
-    max-width: 520px;
+    max-width: 560px;
     color: #c4c1d0;
     line-height: 1.8;
     margin-top: 22px;
-    font-size: 15px;
-}
-
-.hero-button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 15px 25px;
-    border-radius: 8px;
-    background: #a855f7;
-    color: white;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 800;
-    transition: .25s;
-}
-
-.hero-button:hover {
-    background: #bd77ff;
-    transform: translateY(-3px);
+    font-size: 14px;
 }
 
 main {
@@ -153,190 +108,232 @@ main {
 
 .section-heading {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 25px;
 }
 
 .section-heading h2 {
-    font-size: 28px;
+    font-size: 27px;
     font-weight: 800;
 }
 
-.section-heading span {
+.count {
     color: var(--muted);
     font-size: 12px;
-}
-
-.search-area {
-    margin: 25px 0;
 }
 
 .search {
     width: 100%;
     padding: 17px 20px;
+    margin-bottom: 22px;
     border: 1px solid #ffffff1a;
     outline: none;
     border-radius: 10px;
-    background: #151722;
+    background: var(--panel);
     color: white;
     font-size: 14px;
-    transition: .2s;
 }
 
 .search:focus {
-    border-color: #a855f7;
+    border-color: var(--accent);
 }
 
 .filters {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 .filter {
-    padding: 10px 17px;
+    padding: 11px 18px;
     border-radius: 7px;
     border: 1px solid #ffffff18;
-    background: #151722;
+    background: var(--panel);
     color: #c7c8d3;
     cursor: pointer;
-    font-weight: 600;
     font-size: 12px;
+    font-weight: 700;
     transition: .2s;
 }
 
 .filter:hover,
 .filter.active {
-    background: #a855f7;
+    background: var(--accent);
     color: white;
-    border-color: #a855f7;
+    border-color: var(--accent);
 }
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
 }
 
 .movie-card {
-    background: var(--panel);
-    border: 1px solid #ffffff0d;
-    border-radius: 12px;
+    min-width: 0;
     overflow: hidden;
+    border-radius: 12px;
+    background: var(--panel);
+    border: 1px solid #ffffff10;
     transition: .3s;
 }
 
 .movie-card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-6px);
     border-color: #a855f766;
-    box-shadow: 0 15px 45px #00000050;
+    box-shadow: 0 15px 40px #00000050;
 }
 
 .poster {
-    height: 260px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
+    padding: 18px;
 }
 
 .poster::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, #090a10aa, transparent);
+    background: linear-gradient(0deg, #090a10bb, transparent 85%);
 }
 
-.poster-content {
+.poster-art {
     position: relative;
     z-index: 1;
 }
 
-.poster-content small {
+.poster-art .emoji {
     display: block;
-    letter-spacing: 4px;
-    font-size: 10px;
-    margin-bottom: 15px;
-    color: #ffffffbb;
+    font-size: 57px;
+    margin-bottom: 14px;
 }
 
-.poster-content strong {
+.poster-art small {
     display: block;
-    font-size: 34px;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    color: #ffffffcf;
+}
+
+.poster-art strong {
+    display: block;
+    font-size: 29px;
     font-weight: 900;
     line-height: 1.05;
     text-transform: uppercase;
+    text-shadow: 0 3px 15px #0008;
 }
 
-.poster-one {
-    background: linear-gradient(135deg, #202d49, #5d8cbd, #171c32);
+.rednotice {
+    background: linear-gradient(135deg, #7a170f, #e15b31, #25101b);
 }
 
-.poster-two {
-    background: linear-gradient(135deg, #472c20, #b57b41, #211c24);
+.frankenstein {
+    background: linear-gradient(135deg, #102d3a, #517b75, #111821);
 }
 
-.poster-three {
-    background: linear-gradient(135deg, #25214d, #6558a8, #151526);
+.adam {
+    background: linear-gradient(135deg, #112f62, #3683c9, #231b50);
+}
+
+.shrek {
+    background: linear-gradient(135deg, #164c2a, #88a83c, #193921);
+}
+
+.home1 {
+    background: linear-gradient(135deg, #194e8a, #b9e4ef, #14345c);
+}
+
+.home2 {
+    background: linear-gradient(135deg, #162c59, #ae526e, #101b39);
+}
+
+.home3 {
+    background: linear-gradient(135deg, #346b3d, #a5be4c, #1d322b);
+}
+
+.home4 {
+    background: linear-gradient(135deg, #764c26, #d19a4e, #34211d);
+}
+
+.home5 {
+    background: linear-gradient(135deg, #253d70, #7391b8, #192c48);
+}
+
+.home6 {
+    background: linear-gradient(135deg, #71452f, #d5a56a, #34221e);
 }
 
 .movie-info {
-    padding: 20px;
+    padding: 17px;
+}
+
+.movie-badge {
+    display: inline-block;
+    padding: 6px 9px;
+    margin-bottom: 12px;
+    background: #a855f722;
+    color: #d5aaff;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .movie-info h3 {
-    font-size: 19px;
-    margin-bottom: 9px;
+    font-size: 17px;
+    margin-bottom: 8px;
 }
 
 .movie-meta {
-    color: #a8a9b7;
-    font-size: 12px;
-    margin-bottom: 13px;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
 }
 
 .movie-info p {
+    min-height: 73px;
     color: #b9bac7;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.7;
-    min-height: 65px;
 }
 
-.tags {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
-    margin-top: 14px;
-}
-
-.tag {
-    background: #ffffff0c;
-    color: #c7b3e8;
-    padding: 6px 9px;
-    border-radius: 5px;
+.audio-note {
+    margin-top: 13px;
+    padding: 10px;
+    background: #ffffff09;
+    border-radius: 7px;
+    color: #c5b1df;
     font-size: 10px;
+    line-height: 1.6;
 }
 
 .watch-button {
+    display: block;
     width: 100%;
-    padding: 13px;
-    margin-top: 20px;
-    border: 0;
+    text-align: center;
+    padding: 13px 8px;
+    margin-top: 14px;
     border-radius: 7px;
-    background: #a855f7;
+    background: var(--accent);
     color: white;
+    text-decoration: none;
     font-weight: 800;
-    cursor: pointer;
+    font-size: 11px;
     transition: .2s;
 }
 
 .watch-button:hover {
-    background: #bf83ff;
+    background: #c184ff;
 }
 
 .empty {
@@ -346,22 +343,21 @@ main {
     color: var(--muted);
 }
 
-.about {
-    margin-top: 90px;
-    padding: 35px;
-    background: #151722;
+.info-box {
+    margin-top: 65px;
+    padding: 28px;
+    border: 1px solid #ffffff12;
     border-radius: 12px;
-    border: 1px solid #ffffff10;
+    background: #151722;
 }
 
-.about h2 {
-    margin-bottom: 15px;
+.info-box h2 {
+    margin-bottom: 12px;
 }
 
-.about p {
-    max-width: 800px;
+.info-box p {
     color: #b9bac7;
-    line-height: 1.9;
+    line-height: 1.8;
     font-size: 13px;
 }
 
@@ -370,115 +366,49 @@ footer {
     text-align: center;
     color: #777989;
     border-top: 1px solid #ffffff12;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 2;
 }
 
-/* Окно просмотра */
-
-.modal {
-    position: fixed;
-    inset: 0;
-    z-index: 50;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: #000000e8;
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal-box {
-    width: min(900px, 100%);
-    background: #151722;
-    border: 1px solid #ffffff20;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.modal-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 22px;
-}
-
-.modal-top h3 {
-    font-size: 17px;
-}
-
-.close {
-    background: none;
-    color: white;
-    border: 0;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-video {
-    display: block;
-    width: 100%;
-    max-height: 65vh;
-    background: black;
-}
-
-.modal-bottom {
-    padding: 18px 22px;
-    color: #aaa;
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-.modal-bottom a {
-    color: #c18aff;
-}
-
-@media(max-width: 850px) {
+@media(max-width: 1050px) {
     .movie-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 700px) {
     header {
         padding: 0 5%;
-        height: 65px;
     }
 
-    nav {
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 10px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .hero {
-        min-height: 390px;
-        padding: 65px 7%;
-    }
-
-    .hero h1 {
-        letter-spacing: -2px;
+    .movie-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     main {
         padding: 45px 5%;
     }
 
+    .poster {
+        height: 210px;
+    }
+
+    .poster-art strong {
+        font-size: 23px;
+    }
+}
+
+@media(max-width: 440px) {
     .movie-grid {
         grid-template-columns: 1fr;
     }
 
     .poster {
-        height: 230px;
+        height: 250px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
     }
 }
 </style>
@@ -488,177 +418,66 @@ video {
 
 <header>
     <div class="logo">NIK<span>STREAM</span></div>
-
-    <nav>
-        <a href="#home">Главная</a>
-        <a href="#catalog">Фильмы</a>
-        <a href="#about">О проекте</a>
-    </nav>
+    <div class="header-label">YOUR MOVIE WORLD</div>
 </header>
 
-<section class="hero" id="home">
-    <div class="hero-content">
-        <div class="eyebrow">ТВОЙ МИР КИНО</div>
+<section class="hero">
+    <div class="eyebrow">WELCOME TO NIKSTREAM</div>
 
-        <h1>СМОТРИ.<br><span>ОТКРЫВАЙ.</span></h1>
+    <h1>ТВОЁ КИНО.<br><span>ТВОЙ ВЫБОР.</span></h1>
 
-        <p>
-            Добро пожаловать в NIKSTREAM.
-            Открывай интересные классические фильмы,
-            выбирай понравившийся и наслаждайся просмотром.
-        </p>
-
-        <a class="hero-button" href="#catalog">ОТКРЫТЬ КАТАЛОГ</a>
-    </div>
+    <p>
+        Выбирай фильмы, открывай любимые истории
+        и находи, где посмотреть их официально.
+        Добро пожаловать в новый NIKSTREAM.
+    </p>
 </section>
 
-<main id="catalog">
+<main>
 
     <div class="section-heading">
         <h2>Каталог фильмов</h2>
-        <span id="movie-count">3 фильма</span>
+        <span class="count" id="count">10 фильмов</span>
     </div>
 
-    <div class="search-area">
-        <input
-            class="search"
-            id="search"
-            type="search"
-            placeholder="🔎  Найти фильм..."
-        >
-    </div>
+    <input
+        type="search"
+        class="search"
+        id="search"
+        placeholder="🔎  Найти фильм..."
+    >
 
     <div class="filters">
         <button class="filter active" data-filter="all">Все фильмы</button>
-        <button class="filter" data-filter="comedy">Комедии</button>
-        <button class="filter" data-filter="adventure">Приключения</button>
-        <button class="filter" data-filter="detective">Детективы</button>
+        <button class="filter" data-filter="netflix">Netflix</button>
+        <button class="filter" data-filter="home">Один дома</button>
     </div>
 
-    <div class="movie-grid" id="movie-grid">
-
-        <article class="movie-card"
-            data-title="one week одна неделя"
-            data-category="comedy">
-
-            <div class="poster poster-one">
-                <div class="poster-content">
-                    <small>A CLASSIC COMEDY</small>
-                    <strong>ONE<br>WEEK</strong>
-                </div>
-            </div>
-
-            <div class="movie-info">
-                <h3>Одна неделя</h3>
-                <div class="movie-meta">1920 · 24 минуты · Чёрно-белый</div>
-
-                <p>
-                    Молодожёны получают дом в разобранном виде.
-                    Их попытка собрать его превращается в забавное приключение.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Комедия</span>
-                    <span class="tag">Классика</span>
-                </div>
-
-                <button class="watch-button"
-                    onclick="openMovie(
-                    'Одна неделя',
-                    'https://commons.wikimedia.org/wiki/Special:Redirect/file/One_Week_(1920).webm',
-                    'https://commons.wikimedia.org/wiki/File:One_Week_(1920).webm'
-                    )">
-                    ▶ СМОТРЕТЬ
-                </button>
-            </div>
-        </article>
-
-        <article class="movie-card"
-            data-title="the general генерал"
-            data-category="comedy adventure">
-
-            <div class="poster poster-two">
-                <div class="poster-content">
-                    <small>A LEGENDARY FILM</small>
-                    <strong>THE<br>GENERAL</strong>
-                </div>
-            </div>
-
-            <div class="movie-info">
-                <h3>Генерал</h3>
-                <div class="movie-meta">1926 · 75 минут · Чёрно-белый</div>
-
-                <p>
-                    Машинист отправляется в захватывающее путешествие,
-                    чтобы вернуть свой любимый локомотив.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Комедия</span>
-                    <span class="tag">Приключения</span>
-                </div>
-
-                <button class="watch-button"
-                    onclick="openMovie(
-                    'Генерал',
-                    'https://commons.wikimedia.org/wiki/Special:Redirect/file/The_General_(1926).webm',
-                    'https://commons.wikimedia.org/wiki/File:The_General_(1926).webm'
-                    )">
-                    ▶ СМОТРЕТЬ
-                </button>
-            </div>
-        </article>
-
-        <article class="movie-card"
-            data-title="sherlock jr шерлок младший"
-            data-category="comedy detective">
-
-            <div class="poster poster-three">
-                <div class="poster-content">
-                    <small>MYSTERY & COMEDY</small>
-                    <strong>SHERLOCK<br>JR.</strong>
-                </div>
-            </div>
-
-            <div class="movie-info">
-                <h3>Шерлок-младший</h3>
-                <div class="movie-meta">1924 · 44 минуты · Чёрно-белый</div>
-
-                <p>
-                    Киномеханик мечтает стать великим сыщиком.
-                    Однажды его фантазия превращается в необычное приключение.
-                </p>
-
-                <div class="tags">
-                    <span class="tag">Комедия</span>
-                    <span class="tag">Детектив</span>
-                </div>
-
-                <button class="watch-button"
-                    onclick="openMovie(
-                    'Шерлок-младший',
-                    'https://commons.wikimedia.org/wiki/Special:Redirect/file/Sherlock_Jr._(1924).webm',
-                    'https://commons.wikimedia.org/wiki/File:Sherlock_Jr._(1924).webm'
-                    )">
-                    ▶ СМОТРЕТЬ
-                </button>
-            </div>
-        </article>
-
-    </div>
+    <div class="movie-grid" id="movie-grid"></div>
 
     <div class="empty" id="empty">
         Ничего не найдено. Попробуй другое название.
     </div>
 
-    <section class="about" id="about">
-        <h2>О NIKSTREAM</h2>
+    <section class="info-box">
+        <h2>🎧 Звук и язык фильма</h2>
         <p>
-            NIKSTREAM — независимый проект с каталогом классического кино.
-            На сайте используются ссылки на видеоматериалы Wikimedia Commons.
-            Правовой статус произведений может различаться в зависимости от страны.
-            Перед дальнейшим распространением материалов необходимо проверить
-            условия использования конкретного фильма.
+            Язык самого сайта не меняется. Озвучку выбирай отдельно
+            для каждого фильма в официальном видеоплеере:
+            открой меню «Аудио и субтитры» и выбери доступную дорожку.
+            Там же можно включить, выключить или настроить громкость.
+            Доступность русского, украинского и английского языков
+            зависит от конкретного фильма и сервиса.
+        </p>
+    </section>
+
+    <section class="info-box">
+        <h2>🍿 О NIKSTREAM</h2>
+        <p>
+            NIKSTREAM — независимый проект-каталог фильмов.
+            Мы не храним и не раздаём защищённые авторским правом
+            копии фильмов. Кнопки просмотра ведут к поиску на
+            официальных сервисах или к информации о легальном просмотре.
         </p>
     </section>
 
@@ -667,113 +486,232 @@ video {
 <footer>
     NIKSTREAM © 2026
     <br>
-    Независимый кинопроект · Не является официальным кинотеатром
+    Независимый проект · Не связан с Netflix или Disney
 </footer>
 
-<div class="modal" id="modal">
-    <div class="modal-box">
-
-        <div class="modal-top">
-            <h3 id="modal-title">Название фильма</h3>
-            <button class="close" onclick="closeMovie()">×</button>
-        </div>
-
-        <video id="player" controls playsinline preload="none">
-            Твой браузер не поддерживает видео.
-        </video>
-
-        <div class="modal-bottom">
-            Видео загружается с Wikimedia Commons.
-            <br>
-            <a id="source-link" href="#" target="_blank" rel="noopener">
-                Открыть страницу оригинального файла
-            </a>
-        </div>
-
-    </div>
-</div>
-
 <script>
-const search = document.getElementById('search');
-const cards = [...document.querySelectorAll('.movie-card')];
-const filters = [...document.querySelectorAll('.filter')];
-const empty = document.getElementById('empty');
-const count = document.getElementById('movie-count');
+const movies = [
+    {
+        title: "Красное уведомление",
+        original: "Red Notice",
+        year: "2021",
+        group: "netflix",
+        category: "NETFLIX",
+        art: "rednotice",
+        emoji: "🚨",
+        poster: "RED NOTICE",
+        description: "Охота за ценными произведениями искусства. Три необычных героя и много неожиданных поворотов.",
+        link: "https://www.netflix.com/search?q=Red%20Notice",
+        button: "ОТКРЫТЬ В NETFLIX"
+    },
+    {
+        title: "Франкенштейн",
+        original: "Frankenstein",
+        year: "2025",
+        group: "netflix",
+        category: "NETFLIX",
+        art: "frankenstein",
+        emoji: "⚡",
+        poster: "FRANKENSTEIN",
+        description: "Новая экранизация знаменитой истории о Викторе Франкенштейне и его необычном создании.",
+        link: "https://www.netflix.com/search?q=Frankenstein",
+        button: "ОТКРЫТЬ В NETFLIX"
+    },
+    {
+        title: "Проект Адам",
+        original: "The Adam Project",
+        year: "2022",
+        group: "netflix",
+        category: "NETFLIX",
+        art: "adam",
+        emoji: "🚀",
+        poster: "THE ADAM PROJECT",
+        description: "Путешественник во времени встречает самого себя в детстве. Вместе им предстоит важная миссия.",
+        link: "https://www.netflix.com/search?q=The%20Adam%20Project",
+        button: "ОТКРЫТЬ В NETFLIX"
+    },
+    {
+        title: "Шрек 2",
+        original: "Shrek 2",
+        year: "2004",
+        group: "netflix",
+        category: "КАТАЛОГ NETFLIX",
+        art: "shrek",
+        emoji: "🐉",
+        poster: "SHREK 2",
+        description: "Шрек и Фиона отправляются знакомиться с родителями. Но встреча оказывается совсем не простой.",
+        link: "https://www.netflix.com/search?q=Shrek%202",
+        button: "ОТКРЫТЬ В NETFLIX"
+    },
 
-let currentFilter = 'all';
+    {
+        title: "Один дома",
+        original: "Home Alone",
+        year: "1990",
+        group: "home",
+        category: "ЧАСТЬ 1",
+        art: "home1",
+        emoji: "🏠",
+        poster: "HOME ALONE",
+        description: "Кевин случайно остаётся дома один на Рождество и готовится встретить незваных гостей.",
+        link: "https://www.justwatch.com/ua/search?q=Home%20Alone",
+        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+    },
+    {
+        title: "Один дома 2: Затерянный в Нью-Йорке",
+        original: "Home Alone 2",
+        year: "1992",
+        group: "home",
+        category: "ЧАСТЬ 2",
+        art: "home2",
+        emoji: "🗽",
+        poster: "LOST IN NEW YORK",
+        description: "Кевин оказывается в Нью-Йорке и снова встречается со старыми знакомыми.",
+        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%202",
+        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+    },
+    {
+        title: "Один дома 3",
+        original: "Home Alone 3",
+        year: "1997",
+        group: "home",
+        category: "ЧАСТЬ 3",
+        art: "home3",
+        emoji: "🎮",
+        poster: "HOME ALONE 3",
+        description: "Мальчик Алекс остаётся дома и сталкивается с группой опасных незнакомцев.",
+        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%203",
+        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+    },
+    {
+        title: "Один дома 4",
+        original: "Home Alone 4",
+        year: "2002",
+        group: "home",
+        category: "ЧАСТЬ 4",
+        art: "home4",
+        emoji: "🎄",
+        poster: "TAKING BACK THE HOUSE",
+        description: "Кевин готовится к Рождеству в новом доме, где его ждут новые приключения.",
+        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%204",
+        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+    },
+    {
+        title: "Один дома 5: Праздничное ограбление",
+        original: "The Holiday Heist",
+        year: "2012",
+        group: "home",
+        category: "ЧАСТЬ 5",
+        art: "home5",
+        emoji: "🎁",
+        poster: "THE HOLIDAY HEIST",
+        description: "Финн и его сестра переезжают в новый дом, где их ждёт необычная рождественская история.",
+        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%20The%20Holiday%20Heist",
+        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+    },
+    {
+        title: "Один дома 6: Дом, милый дом",
+        original: "Home Sweet Home Alone",
+        year: "2021",
+        group: "home",
+        category: "ЧАСТЬ 6",
+        art: "home6",
+        emoji: "❄️",
+        poster: "HOME SWEET HOME",
+        description: "Макс остаётся дома и пытается справиться с незваными гостями.",
+        link: "https://www.justwatch.com/ua/search?q=Home%20Sweet%20Home%20Alone",
+        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+    }
+];
 
-function filterMovies() {
-    const query = search.value.toLowerCase().trim();
-    let visible = 0;
+const grid = document.getElementById("movie-grid");
+const search = document.getElementById("search");
+const count = document.getElementById("count");
+const empty = document.getElementById("empty");
+const filters = [...document.querySelectorAll(".filter")];
 
-    cards.forEach(card => {
-        const title = card.dataset.title;
-        const categories = card.dataset.category;
+let currentFilter = "all";
 
-        const matchesSearch = title.includes(query);
+function renderMovies() {
+    const query = search.value.trim().toLowerCase();
+
+    const visibleMovies = movies.filter(movie => {
+        const text = (
+            movie.title + " " +
+            movie.original + " " +
+            movie.year
+        ).toLowerCase();
+
+        const matchesSearch = text.includes(query);
+
         const matchesFilter =
-            currentFilter === 'all' ||
-            categories.split(' ').includes(currentFilter);
+            currentFilter === "all" ||
+            movie.group === currentFilter;
 
-        const show = matchesSearch && matchesFilter;
-
-        card.style.display = show ? '' : 'none';
-
-        if (show) visible++;
+        return matchesSearch && matchesFilter;
     });
 
-    count.textContent = visible + ' фильмов';
-    empty.style.display = visible === 0 ? 'block' : 'none';
+    grid.innerHTML = visibleMovies.map(movie => `
+        <article class="movie-card">
+
+            <div class="poster ${movie.art}">
+                <div class="poster-art">
+                    <span class="emoji">${movie.emoji}</span>
+                    <small>${movie.category}</small>
+                    <strong>${movie.poster}</strong>
+                </div>
+            </div>
+
+            <div class="movie-info">
+
+                <span class="movie-badge">${movie.category}</span>
+
+                <h3>${movie.title}</h3>
+
+                <div class="movie-meta">
+                    ${movie.original} · ${movie.year}
+                </div>
+
+                <p>${movie.description}</p>
+
+                <div class="audio-note">
+                    🔊 Звук и язык выбираются в плеере сервиса
+                </div>
+
+                <a
+                    class="watch-button"
+                    href="${movie.link}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ${movie.button} ↗
+                </a>
+
+            </div>
+        </article>
+    `).join("");
+
+    count.textContent = visibleMovies.length + " фильмов";
+
+    empty.style.display =
+        visibleMovies.length === 0 ? "block" : "none";
 }
 
-search.addEventListener('input', filterMovies);
+search.addEventListener("input", renderMovies);
 
 filters.forEach(button => {
-    button.addEventListener('click', () => {
-        filters.forEach(item => item.classList.remove('active'));
+    button.addEventListener("click", () => {
+        filters.forEach(item => item.classList.remove("active"));
 
-        button.classList.add('active');
+        button.classList.add("active");
+
         currentFilter = button.dataset.filter;
 
-        filterMovies();
+        renderMovies();
     });
 });
 
-function openMovie(title, videoUrl, sourceUrl) {
-    const modal = document.getElementById('modal');
-    const player = document.getElementById('player');
-
-    document.getElementById('modal-title').textContent = title;
-    document.getElementById('source-link').href = sourceUrl;
-
-    player.src = videoUrl;
-    player.load();
-
-    modal.classList.add('show');
-}
-
-function closeMovie() {
-    const modal = document.getElementById('modal');
-    const player = document.getElementById('player');
-
-    player.pause();
-    player.removeAttribute('src');
-    player.load();
-
-    modal.classList.remove('show');
-}
-
-document.getElementById('modal').addEventListener('click', event => {
-    if (event.target.id === 'modal') {
-        closeMovie();
-    }
-});
-
-document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-        closeMovie();
-    }
-});
+renderMovies();
 </script>
 
 </body>
