@@ -4,16 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NIKSTREAM — Кинотеатр</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>NIKSTREAM — Онлайн-кинотеатр</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 :root {
     --bg: #090a10;
     --panel: #151722;
-    --accent: #a855f7;
+    --purple: #a855f7;
     --text: #fff;
     --muted: #a3a5b5;
 }
@@ -24,14 +23,14 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     background: var(--bg);
     color: var(--text);
-    font-family: Inter, sans-serif;
+    font-family: Inter, Arial, sans-serif;
+}
+
+button, input, select {
+    font: inherit;
 }
 
 header {
@@ -54,40 +53,44 @@ header {
 }
 
 .logo span {
-    color: #bb75ff;
+    color: #bd77ff;
 }
 
-.header-label {
-    color: #b98aff;
+.header-status {
+    color: #c69aff;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 2px;
 }
 
 .hero {
-    min-height: 390px;
-    padding: 80px 9%;
+    min-height: 420px;
+    padding: 85px 9%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     background:
-        radial-gradient(ellipse at 80% 30%, #8129ca66, transparent 45%),
-        linear-gradient(110deg, #171027, #10111b 65%, #25123a);
+        linear-gradient(90deg, #090a10 4%, #090a10dd 48%, #090a1030),
+        url('https://websooty.tech/media/big-buck-bunny/backdrop.jpg')
+        center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
 }
 
 .eyebrow {
-    color: #cf9cff;
+    color: #cb9aff;
     font-size: 12px;
-    letter-spacing: 4px;
     font-weight: 800;
+    letter-spacing: 4px;
     margin-bottom: 20px;
 }
 
 .hero h1 {
-    font-size: clamp(48px, 8vw, 85px);
-    line-height: 1;
-    letter-spacing: -4px;
+    font-size: clamp(44px, 8vw, 82px);
     font-weight: 900;
+    letter-spacing: -4px;
+    line-height: 1;
 }
 
 .hero h1 span {
@@ -95,26 +98,45 @@ header {
 }
 
 .hero p {
-    max-width: 560px;
-    color: #c4c1d0;
-    line-height: 1.8;
     margin-top: 22px;
+    color: #d2d0dc;
+    line-height: 1.8;
     font-size: 14px;
+    max-width: 510px;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 15px 25px;
+    background: var(--purple);
+    color: white;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    transition: .2s;
+}
+
+.hero-button:hover {
+    background: #c184ff;
+    transform: translateY(-2px);
 }
 
 main {
     padding: 65px 7%;
 }
 
-.section-heading {
+.heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
     margin-bottom: 25px;
 }
 
-.section-heading h2 {
-    font-size: 27px;
+.heading h2 {
+    font-size: 28px;
     font-weight: 800;
 }
 
@@ -129,14 +151,14 @@ main {
     margin-bottom: 22px;
     border: 1px solid #ffffff1a;
     outline: none;
-    border-radius: 10px;
+    border-radius: 9px;
     background: var(--panel);
     color: white;
     font-size: 14px;
 }
 
 .search:focus {
-    border-color: var(--accent);
+    border-color: var(--purple);
 }
 
 .filters {
@@ -147,188 +169,134 @@ main {
 }
 
 .filter {
-    padding: 11px 18px;
+    padding: 10px 17px;
     border-radius: 7px;
     border: 1px solid #ffffff18;
     background: var(--panel);
     color: #c7c8d3;
     cursor: pointer;
-    font-size: 12px;
     font-weight: 700;
+    font-size: 12px;
     transition: .2s;
 }
 
 .filter:hover,
 .filter.active {
-    background: var(--accent);
+    background: var(--purple);
+    border-color: var(--purple);
     color: white;
-    border-color: var(--accent);
 }
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
 }
 
 .movie-card {
-    min-width: 0;
-    overflow: hidden;
-    border-radius: 12px;
     background: var(--panel);
-    border: 1px solid #ffffff10;
+    border: 1px solid #ffffff12;
+    border-radius: 12px;
+    overflow: hidden;
     transition: .3s;
 }
 
 .movie-card:hover {
     transform: translateY(-6px);
     border-color: #a855f766;
-    box-shadow: 0 15px 40px #00000050;
+    box-shadow: 0 14px 40px #0008;
 }
 
 .poster {
-    height: 250px;
+    height: 220px;
     position: relative;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 18px;
+    background: #252039;
 }
 
-.poster::before {
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.movie-card:hover .poster img {
+    transform: scale(1.05);
+}
+
+.poster::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, #090a10bb, transparent 85%);
+    background: linear-gradient(0deg, #090a10bb, transparent 65%);
+    pointer-events: none;
 }
 
-.poster-art {
-    position: relative;
+.poster-title {
+    position: absolute;
+    bottom: 17px;
+    left: 18px;
     z-index: 1;
-}
-
-.poster-art .emoji {
-    display: block;
-    font-size: 57px;
-    margin-bottom: 14px;
-}
-
-.poster-art small {
-    display: block;
-    font-weight: 800;
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    color: #ffffffcf;
-}
-
-.poster-art strong {
-    display: block;
-    font-size: 29px;
+    font-size: 21px;
     font-weight: 900;
-    line-height: 1.05;
-    text-transform: uppercase;
-    text-shadow: 0 3px 15px #0008;
-}
-
-.rednotice {
-    background: linear-gradient(135deg, #7a170f, #e15b31, #25101b);
-}
-
-.frankenstein {
-    background: linear-gradient(135deg, #102d3a, #517b75, #111821);
-}
-
-.adam {
-    background: linear-gradient(135deg, #112f62, #3683c9, #231b50);
-}
-
-.shrek {
-    background: linear-gradient(135deg, #164c2a, #88a83c, #193921);
-}
-
-.home1 {
-    background: linear-gradient(135deg, #194e8a, #b9e4ef, #14345c);
-}
-
-.home2 {
-    background: linear-gradient(135deg, #162c59, #ae526e, #101b39);
-}
-
-.home3 {
-    background: linear-gradient(135deg, #346b3d, #a5be4c, #1d322b);
-}
-
-.home4 {
-    background: linear-gradient(135deg, #764c26, #d19a4e, #34211d);
-}
-
-.home5 {
-    background: linear-gradient(135deg, #253d70, #7391b8, #192c48);
-}
-
-.home6 {
-    background: linear-gradient(135deg, #71452f, #d5a56a, #34221e);
+    text-shadow: 0 2px 12px black;
 }
 
 .movie-info {
-    padding: 17px;
+    padding: 19px;
 }
 
-.movie-badge {
+.movie-tag {
     display: inline-block;
     padding: 6px 9px;
-    margin-bottom: 12px;
     background: #a855f722;
-    color: #d5aaff;
+    color: #d3aaff;
     border-radius: 5px;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1px;
+    margin-bottom: 12px;
 }
 
 .movie-info h3 {
-    font-size: 17px;
+    font-size: 18px;
     margin-bottom: 8px;
 }
 
 .movie-meta {
-    font-size: 11px;
     color: var(--muted);
-    margin-bottom: 12px;
+    font-size: 11px;
+    margin-bottom: 13px;
 }
 
 .movie-info p {
-    min-height: 73px;
+    min-height: 65px;
     color: #b9bac7;
     font-size: 12px;
     line-height: 1.7;
 }
 
-.audio-note {
+.movie-audio {
     margin-top: 13px;
     padding: 10px;
-    background: #ffffff09;
     border-radius: 7px;
-    color: #c5b1df;
+    background: #ffffff09;
+    color: #cbb5e8;
     font-size: 10px;
-    line-height: 1.6;
 }
 
 .watch-button {
     display: block;
     width: 100%;
-    text-align: center;
-    padding: 13px 8px;
-    margin-top: 14px;
+    margin-top: 16px;
+    padding: 14px;
+    border: 0;
     border-radius: 7px;
-    background: var(--accent);
+    background: var(--purple);
     color: white;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 11px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 900;
     transition: .2s;
 }
 
@@ -338,77 +306,205 @@ main {
 
 .empty {
     display: none;
-    padding: 45px;
+    padding: 40px;
     text-align: center;
     color: var(--muted);
 }
 
-.info-box {
-    margin-top: 65px;
-    padding: 28px;
-    border: 1px solid #ffffff12;
-    border-radius: 12px;
+.notice {
+    margin-top: 60px;
+    padding: 25px;
     background: #151722;
+    border: 1px solid #ffffff12;
+    border-radius: 11px;
 }
 
-.info-box h2 {
+.notice h2 {
+    font-size: 21px;
     margin-bottom: 12px;
 }
 
-.info-box p {
+.notice p {
     color: #b9bac7;
-    line-height: 1.8;
     font-size: 13px;
+    line-height: 1.8;
+}
+
+.notice a {
+    color: #c9a0ff;
 }
 
 footer {
     padding: 35px 7%;
     text-align: center;
-    color: #777989;
     border-top: 1px solid #ffffff12;
+    color: #777989;
     font-size: 11px;
     line-height: 2;
 }
 
-@media(max-width: 1050px) {
+/* Видеоплеер */
+
+.player-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    background: #000000ed;
+    overflow-y: auto;
+}
+
+.player-modal.open {
+    display: flex;
+}
+
+.player-dialog {
+    width: min(950px, 100%);
+    background: #151722;
+    border: 1px solid #ffffff20;
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 17px 22px;
+    gap: 15px;
+}
+
+.player-header h2 {
+    font-size: 18px;
+}
+
+.close-button {
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 31px;
+    cursor: pointer;
+}
+
+video {
+    display: block;
+    width: 100%;
+    max-height: 65vh;
+    background: black;
+}
+
+.player-controls {
+    padding: 18px 22px;
+}
+
+.sound-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.sound-button {
+    background: #292538;
+    border: 1px solid #ffffff1c;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.volume-slider {
+    width: min(180px, 40vw);
+    accent-color: var(--purple);
+    cursor: pointer;
+}
+
+.audio-language {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    color: #c6c2d1;
+    font-size: 12px;
+}
+
+.audio-language select {
+    color: white;
+    background: #292538;
+    border: 1px solid #ffffff20;
+    padding: 9px 12px;
+    border-radius: 7px;
+}
+
+.audio-language select:disabled {
+    opacity: .8;
+}
+
+.player-message {
+    margin-top: 12px;
+    color: #c7a0ff;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.credits {
+    margin-top: 15px;
+    font-size: 11px;
+    color: #8e8fa0;
+    line-height: 1.8;
+}
+
+.credits a {
+    color: #c69aff;
+}
+
+@media(max-width: 850px) {
     .movie-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media(max-width: 700px) {
+@media(max-width: 560px) {
     header {
         padding: 0 5%;
     }
 
-    .movie-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .logo {
+        font-size: 21px;
+    }
+
+    .header-status {
+        font-size: 9px;
+    }
+
+    .hero {
+        min-height: 360px;
+        padding: 65px 6%;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
     }
 
     main {
         padding: 45px 5%;
     }
 
-    .poster {
-        height: 210px;
-    }
-
-    .poster-art strong {
-        font-size: 23px;
-    }
-}
-
-@media(max-width: 440px) {
     .movie-grid {
         grid-template-columns: 1fr;
     }
 
     .poster {
-        height: 250px;
+        height: 230px;
     }
 
-    .hero h1 {
-        letter-spacing: -2px;
+    .player-header h2 {
+        font-size: 15px;
     }
 }
 </style>
@@ -418,66 +514,65 @@ footer {
 
 <header>
     <div class="logo">NIK<span>STREAM</span></div>
-    <div class="header-label">YOUR MOVIE WORLD</div>
+    <div class="header-status">FREE MOVIES</div>
 </header>
 
 <section class="hero">
-    <div class="eyebrow">WELCOME TO NIKSTREAM</div>
+    <div class="hero-content">
+        <div class="eyebrow">WELCOME TO NIKSTREAM</div>
 
-    <h1>ТВОЁ КИНО.<br><span>ТВОЙ ВЫБОР.</span></h1>
+        <h1>ТВОЙ<br><span>КИНОМИР.</span></h1>
 
-    <p>
-        Выбирай фильмы, открывай любимые истории
-        и находи, где посмотреть их официально.
-        Добро пожаловать в новый NIKSTREAM.
-    </p>
+        <p>
+            Выбирай фильм, нажимай Play и смотри прямо
+            на NIKSTREAM. Без регистрации, без переходов
+            на страницы поиска.
+        </p>
+
+        <a href="#catalog" class="hero-button">
+            СМОТРЕТЬ ФИЛЬМЫ
+        </a>
+    </div>
 </section>
 
-<main>
+<main id="catalog">
 
-    <div class="section-heading">
+    <div class="heading">
         <h2>Каталог фильмов</h2>
-        <span class="count" id="count">10 фильмов</span>
+        <span class="count" id="movie-count">5 фильмов</span>
     </div>
 
     <input
-        type="search"
         class="search"
+        type="search"
         id="search"
         placeholder="🔎  Найти фильм..."
     >
 
     <div class="filters">
-        <button class="filter active" data-filter="all">Все фильмы</button>
-        <button class="filter" data-filter="netflix">Netflix</button>
-        <button class="filter" data-filter="home">Один дома</button>
+        <button class="filter active" data-filter="all">Все</button>
+        <button class="filter" data-filter="family">Семейные</button>
+        <button class="filter" data-filter="animation">Анимация</button>
+        <button class="filter" data-filter="scifi">Фантастика</button>
     </div>
 
     <div class="movie-grid" id="movie-grid"></div>
 
     <div class="empty" id="empty">
-        Ничего не найдено. Попробуй другое название.
+        Фильмы не найдены. Попробуй другое название.
     </div>
 
-    <section class="info-box">
-        <h2>🎧 Звук и язык фильма</h2>
-        <p>
-            Язык самого сайта не меняется. Озвучку выбирай отдельно
-            для каждого фильма в официальном видеоплеере:
-            открой меню «Аудио и субтитры» и выбери доступную дорожку.
-            Там же можно включить, выключить или настроить громкость.
-            Доступность русского, украинского и английского языков
-            зависит от конкретного фильма и сервиса.
-        </p>
-    </section>
+    <section class="notice">
+        <h2>🎬 А где «Один дома» и фильмы Netflix?</h2>
 
-    <section class="info-box">
-        <h2>🍿 О NIKSTREAM</h2>
         <p>
-            NIKSTREAM — независимый проект-каталог фильмов.
-            Мы не храним и не раздаём защищённые авторским правом
-            копии фильмов. Кнопки просмотра ведут к поиску на
-            официальных сервисах или к информации о легальном просмотре.
+            Я убрал прежние нерабочие кнопки и ссылки на поиск.
+            «Один дома» и фильмы Netflix защищены авторским правом:
+            их нельзя просто скопировать на бесплатный сайт без
+            разрешения правообладателей. Поэтому я не буду выдавать
+            чужие копии за легальный бесплатный просмотр.
+            В каталоге NIKSTREAM — фильмы, которые разрешено
+            распространять бесплатно.
         </p>
     </section>
 
@@ -486,149 +581,236 @@ footer {
 <footer>
     NIKSTREAM © 2026
     <br>
-    Независимый проект · Не связан с Netflix или Disney
+    Независимый проект. Не связан с Netflix или Blender Foundation.
 </footer>
+
+<!-- ВСТРОЕННЫЙ ПЛЕЕР -->
+
+<div class="player-modal" id="player-modal">
+
+    <div class="player-dialog">
+
+        <div class="player-header">
+            <h2 id="player-title">Название фильма</h2>
+
+            <button
+                class="close-button"
+                id="close-player"
+                aria-label="Закрыть"
+            >×</button>
+        </div>
+
+        <video
+            id="movie-player"
+            controls
+            playsinline
+            preload="none"
+        >
+            Твой браузер не поддерживает видео.
+        </video>
+
+        <div class="player-controls">
+
+            <div class="sound-row">
+                <button class="sound-button" id="mute-button">
+                    🔊 Выключить звук
+                </button>
+
+                <span style="font-size:12px;color:#aaa">
+                    Громкость
+                </span>
+
+                <input
+                    class="volume-slider"
+                    id="volume-slider"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0.8"
+                >
+            </div>
+
+            <div class="audio-language">
+                <span>🎧 Язык аудио:</span>
+
+                <select id="audio-language" disabled>
+                    <option>Оригинальная дорожка</option>
+                </select>
+            </div>
+
+            <div class="player-message" id="player-message">
+                Выбран фильм. Нажми Play для просмотра.
+            </div>
+
+            <div class="credits">
+                Фильм предоставлен по открытой лицензии.
+                <br>
+                <span id="movie-credit"></span>
+                <br>
+                <a
+                    id="license-link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Условия лицензии
+                </a>
+                ·
+                <a
+                    id="source-link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Информация об источнике
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
 <script>
 const movies = [
     {
-        title: "Красное уведомление",
-        original: "Red Notice",
-        year: "2021",
-        group: "netflix",
-        category: "NETFLIX",
-        art: "rednotice",
-        emoji: "🚨",
-        poster: "RED NOTICE",
-        description: "Охота за ценными произведениями искусства. Три необычных героя и много неожиданных поворотов.",
-        link: "https://www.netflix.com/search?q=Red%20Notice",
-        button: "ОТКРЫТЬ В NETFLIX"
-    },
-    {
-        title: "Франкенштейн",
-        original: "Frankenstein",
-        year: "2025",
-        group: "netflix",
-        category: "NETFLIX",
-        art: "frankenstein",
-        emoji: "⚡",
-        poster: "FRANKENSTEIN",
-        description: "Новая экранизация знаменитой истории о Викторе Франкенштейне и его необычном создании.",
-        link: "https://www.netflix.com/search?q=Frankenstein",
-        button: "ОТКРЫТЬ В NETFLIX"
-    },
-    {
-        title: "Проект Адам",
-        original: "The Adam Project",
-        year: "2022",
-        group: "netflix",
-        category: "NETFLIX",
-        art: "adam",
-        emoji: "🚀",
-        poster: "THE ADAM PROJECT",
-        description: "Путешественник во времени встречает самого себя в детстве. Вместе им предстоит важная миссия.",
-        link: "https://www.netflix.com/search?q=The%20Adam%20Project",
-        button: "ОТКРЫТЬ В NETFLIX"
-    },
-    {
-        title: "Шрек 2",
-        original: "Shrek 2",
-        year: "2004",
-        group: "netflix",
-        category: "КАТАЛОГ NETFLIX",
-        art: "shrek",
-        emoji: "🐉",
-        poster: "SHREK 2",
-        description: "Шрек и Фиона отправляются знакомиться с родителями. Но встреча оказывается совсем не простой.",
-        link: "https://www.netflix.com/search?q=Shrek%202",
-        button: "ОТКРЫТЬ В NETFLIX"
+        id: "bunny",
+        title: "Большой заяц Бак",
+        original: "Big Buck Bunny",
+        year: "2008",
+        duration: "10 минут",
+        category: "Семейная комедия",
+        tags: ["family", "animation"],
+        description:
+            "Добродушный большой заяц наслаждается прекрасным утром, пока трое хулиганов не начинают ему мешать.",
+        poster:
+            "https://websooty.tech/media/big-buck-bunny/backdrop.jpg",
+        video:
+            "https://websooty.tech/media/big-buck-bunny/big-buck-bunny-720p.mp4",
+        audio:
+            "Музыка и звуковые эффекты",
+        credit:
+            "© 2008 Blender Foundation / www.bigbuckbunny.org — CC BY 3.0",
+        license:
+            "https://creativecommons.org/licenses/by/3.0/",
+        source:
+            "https://websooty.tech/watch/big-buck-bunny"
     },
 
     {
-        title: "Один дома",
-        original: "Home Alone",
-        year: "1990",
-        group: "home",
-        category: "ЧАСТЬ 1",
-        art: "home1",
-        emoji: "🏠",
-        poster: "HOME ALONE",
-        description: "Кевин случайно остаётся дома один на Рождество и готовится встретить незваных гостей.",
-        link: "https://www.justwatch.com/ua/search?q=Home%20Alone",
-        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+        id: "sintel",
+        title: "Синтел",
+        original: "Sintel",
+        year: "2010",
+        duration: "15 минут",
+        category: "Фэнтези",
+        tags: ["animation", "scifi"],
+        description:
+            "Девушка отправляется в путешествие по огромному миру, чтобы найти маленького дракона, с которым подружилась.",
+        poster:
+            "https://websooty.tech/media/sintel/backdrop.jpg",
+        video:
+            "https://websooty.tech/media/sintel/sintel-720p.mp4",
+        audio:
+            "Оригинальная аудиодорожка",
+        credit:
+            "Blender Foundation / Durian — CC BY 3.0",
+        license:
+            "https://creativecommons.org/licenses/by/3.0/",
+        source:
+            "https://websooty.tech/watch/sintel"
     },
+
     {
-        title: "Один дома 2: Затерянный в Нью-Йорке",
-        original: "Home Alone 2",
-        year: "1992",
-        group: "home",
-        category: "ЧАСТЬ 2",
-        art: "home2",
-        emoji: "🗽",
-        poster: "LOST IN NEW YORK",
-        description: "Кевин оказывается в Нью-Йорке и снова встречается со старыми знакомыми.",
-        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%202",
-        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
-    },
-    {
-        title: "Один дома 3",
-        original: "Home Alone 3",
-        year: "1997",
-        group: "home",
-        category: "ЧАСТЬ 3",
-        art: "home3",
-        emoji: "🎮",
-        poster: "HOME ALONE 3",
-        description: "Мальчик Алекс остаётся дома и сталкивается с группой опасных незнакомцев.",
-        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%203",
-        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
-    },
-    {
-        title: "Один дома 4",
-        original: "Home Alone 4",
-        year: "2002",
-        group: "home",
-        category: "ЧАСТЬ 4",
-        art: "home4",
-        emoji: "🎄",
-        poster: "TAKING BACK THE HOUSE",
-        description: "Кевин готовится к Рождеству в новом доме, где его ждут новые приключения.",
-        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%204",
-        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
-    },
-    {
-        title: "Один дома 5: Праздничное ограбление",
-        original: "The Holiday Heist",
+        id: "tears",
+        title: "Слёзы стали",
+        original: "Tears of Steel",
         year: "2012",
-        group: "home",
-        category: "ЧАСТЬ 5",
-        art: "home5",
-        emoji: "🎁",
-        poster: "THE HOLIDAY HEIST",
-        description: "Финн и его сестра переезжают в новый дом, где их ждёт необычная рождественская история.",
-        link: "https://www.justwatch.com/ua/search?q=Home%20Alone%20The%20Holiday%20Heist",
-        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+        duration: "12 минут",
+        category: "Фантастика",
+        tags: ["scifi"],
+        description:
+            "В недалёком будущем группа людей пытается изменить ход истории и остановить войну с машинами.",
+        poster:
+            "https://websooty.tech/media/tears-of-steel/backdrop.jpg",
+        video:
+            "https://websooty.tech/media/tears-of-steel/tears-of-steel-720p.mp4",
+        audio:
+            "Оригинальная аудиодорожка",
+        credit:
+            "Blender Foundation / Mango — CC BY 3.0",
+        license:
+            "https://creativecommons.org/licenses/by/3.0/",
+        source:
+            "https://websooty.tech/watch/tears-of-steel"
     },
+
     {
-        title: "Один дома 6: Дом, милый дом",
-        original: "Home Sweet Home Alone",
-        year: "2021",
-        group: "home",
-        category: "ЧАСТЬ 6",
-        art: "home6",
-        emoji: "❄️",
-        poster: "HOME SWEET HOME",
-        description: "Макс остаётся дома и пытается справиться с незваными гостями.",
-        link: "https://www.justwatch.com/ua/search?q=Home%20Sweet%20Home%20Alone",
-        button: "НАЙТИ ГДЕ ПОСМОТРЕТЬ"
+        id: "elephants",
+        title: "Сны слонов",
+        original: "Elephants Dream",
+        year: "2006",
+        duration: "11 минут",
+        category: "Анимация / фантастика",
+        tags: ["animation", "scifi"],
+        description:
+            "Два необычных героя исследуют странный и бесконечный механизм, где каждый поворот скрывает новую загадку.",
+        poster:
+            "https://websooty.tech/media/elephants-dream/backdrop.jpg",
+        video:
+            "https://websooty.tech/media/elephants-dream/elephants-dream-576p.mp4",
+        audio:
+            "Оригинальная аудиодорожка",
+        credit:
+            "Blender Foundation / Netherlands Media Art Institute — CC BY 2.5",
+        license:
+            "https://creativecommons.org/licenses/by/2.5/",
+        source:
+            "https://websooty.tech/watch/elephants-dream"
+    },
+
+    {
+        id: "spring",
+        title: "Весна",
+        original: "Spring",
+        year: "2019",
+        duration: "8 минут",
+        category: "Семейное фэнтези",
+        tags: ["family", "animation"],
+        description:
+            "Девочка-пастушка и её собака встречают древних духов и отправляются в необычное путешествие.",
+        poster:
+            "https://websooty.tech/media/spring/backdrop.jpg",
+        video:
+            "https://websooty.tech/media/spring/spring-1080p.mp4",
+        audio:
+            "Музыка и звуковые эффекты, без диалогов",
+        credit:
+            "Blender Foundation / Spring Open Movie — CC BY 4.0",
+        license:
+            "https://creativecommons.org/licenses/by/4.0/",
+        source:
+            "https://websooty.tech/watch/spring"
     }
 ];
 
 const grid = document.getElementById("movie-grid");
 const search = document.getElementById("search");
-const count = document.getElementById("count");
+const count = document.getElementById("movie-count");
 const empty = document.getElementById("empty");
 const filters = [...document.querySelectorAll(".filter")];
+
+const modal = document.getElementById("player-modal");
+const player = document.getElementById("movie-player");
+
+const playerTitle = document.getElementById("player-title");
+const playerMessage = document.getElementById("player-message");
+
+const volumeSlider = document.getElementById("volume-slider");
+const muteButton = document.getElementById("mute-button");
+
+const audioLanguage = document.getElementById("audio-language");
 
 let currentFilter = "all";
 
@@ -636,17 +818,18 @@ function renderMovies() {
     const query = search.value.trim().toLowerCase();
 
     const visibleMovies = movies.filter(movie => {
-        const text = (
+        const searchable = (
             movie.title + " " +
             movie.original + " " +
-            movie.year
+            movie.year + " " +
+            movie.category
         ).toLowerCase();
 
-        const matchesSearch = text.includes(query);
+        const matchesSearch = searchable.includes(query);
 
         const matchesFilter =
             currentFilter === "all" ||
-            movie.group === currentFilter;
+            movie.tags.includes(currentFilter);
 
         return matchesSearch && matchesFilter;
     });
@@ -654,40 +837,40 @@ function renderMovies() {
     grid.innerHTML = visibleMovies.map(movie => `
         <article class="movie-card">
 
-            <div class="poster ${movie.art}">
-                <div class="poster-art">
-                    <span class="emoji">${movie.emoji}</span>
-                    <small>${movie.category}</small>
-                    <strong>${movie.poster}</strong>
-                </div>
+            <div class="poster">
+                <img
+                    src="${movie.poster}"
+                    alt="${movie.original}"
+                    loading="lazy"
+                >
+                <div class="poster-title">${movie.original}</div>
             </div>
 
             <div class="movie-info">
 
-                <span class="movie-badge">${movie.category}</span>
+                <span class="movie-tag">${movie.category}</span>
 
                 <h3>${movie.title}</h3>
 
                 <div class="movie-meta">
-                    ${movie.original} · ${movie.year}
+                    ${movie.original} · ${movie.year} · ${movie.duration}
                 </div>
 
                 <p>${movie.description}</p>
 
-                <div class="audio-note">
-                    🔊 Звук и язык выбираются в плеере сервиса
+                <div class="movie-audio">
+                    🔊 ${movie.audio}
                 </div>
 
-                <a
+                <button
                     class="watch-button"
-                    href="${movie.link}"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onclick="watchMovie('${movie.id}')"
                 >
-                    ${movie.button} ↗
-                </a>
+                    ▶ СМОТРЕТЬ
+                </button>
 
             </div>
+
         </article>
     `).join("");
 
@@ -696,6 +879,104 @@ function renderMovies() {
     empty.style.display =
         visibleMovies.length === 0 ? "block" : "none";
 }
+
+function watchMovie(id) {
+    const movie = movies.find(item => item.id === id);
+
+    if (!movie) return;
+
+    player.pause();
+
+    player.removeAttribute("src");
+    player.load();
+
+    playerTitle.textContent = movie.title;
+    document.getElementById("movie-credit").textContent = movie.credit;
+    document.getElementById("license-link").href = movie.license;
+    document.getElementById("source-link").href = movie.source;
+
+    audioLanguage.innerHTML = `
+        <option>${movie.audio}</option>
+    `;
+
+    audioLanguage.disabled = true;
+
+    player.volume = Number(volumeSlider.value);
+    player.muted = false;
+    muteButton.textContent = "🔊 Выключить звук";
+
+    player.src = movie.video;
+    player.load();
+
+    playerMessage.textContent =
+        "Загружается видео. Нажми Play, если воспроизведение не началось автоматически.";
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+
+    player.play().then(() => {
+        playerMessage.textContent = "Фильм воспроизводится прямо на NIKSTREAM.";
+    }).catch(() => {
+        playerMessage.textContent =
+            "Видео готово. Нажми ▶ в плеере для запуска.";
+    });
+}
+
+function closePlayer() {
+    player.pause();
+    player.removeAttribute("src");
+    player.load();
+
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("close-player")
+    .addEventListener("click", closePlayer);
+
+modal.addEventListener("click", event => {
+    if (event.target === modal) {
+        closePlayer();
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        closePlayer();
+    }
+});
+
+muteButton.addEventListener("click", () => {
+    player.muted = !player.muted;
+
+    muteButton.textContent = player.muted
+        ? "🔇 Включить звук"
+        : "🔊 Выключить звук";
+});
+
+volumeSlider.addEventListener("input", () => {
+    player.volume = Number(volumeSlider.value);
+
+    if (player.volume > 0) {
+        player.muted = false;
+        muteButton.textContent = "🔊 Выключить звук";
+    } else {
+        player.muted = true;
+        muteButton.textContent = "🔇 Включить звук";
+    }
+});
+
+player.addEventListener("error", () => {
+    if (modal.classList.contains("open")) {
+        playerMessage.textContent =
+            "Не удалось загрузить видео. Возможно, источник временно недоступен. Попробуй немного позже.";
+    }
+});
+
+player.addEventListener("playing", () => {
+    playerMessage.textContent =
+        "Фильм воспроизводится прямо на NIKSTREAM.";
+});
 
 search.addEventListener("input", renderMovies);
 
